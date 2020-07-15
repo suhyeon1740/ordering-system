@@ -5,51 +5,23 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
     <link rel="stylesheet" href="style.css">
+    <script src="https://code.jquery.com/jquery-3.5.1.js" integrity="sha256-QWo7LDvxbWT2tbbQ97B53yJnYU3WhH/C8ycbRAkjPDc="
+        crossorigin="anonymous"></script>
+        
 </head>
 <body>
     <div class="wrap">
         <header>
             <h1>ORDERING SYSTEM</h1>       
-            <nav>
-                <ul>
-                    <li class="">Pizza</li>
-                    <li class="active">Side dish</li>
-                    <li>Drink & Other</li>                    
-                </ul>
-            </nav>
+            <nav></nav>
         </header>
         <div class="flex-wrap">                        
             <section class="menu-list-section">                
-                <div class="menu-list">
-                    <article class="menu-item">
-                        <img src="images/시리얼칠리크랩.jpg" alt="시리얼칠리크랩">
-                        <div class="item-info">
-                            <p>시리얼 칠리크랩</p>
-                            <p>34,900원</p>
-                        </div>
-                        <button class="order-button">ADD CART</button>
-                    </article>
-                    <article class="menu-item">
-                        <img src="images/치즈케이크 블랙타이거.jpg" alt="치즈케이크 블랙타이거">
-                        <div class="item-info">
-                            <p>치즈케이크 블랙타이거</p>
-                            <p>35,900원</p>
-                        </div>
-                        <button class="order-button">ADD CART</button>
-                    </article>
-                    <article class="menu-item">
-                        <img src="images/블랙앵거스 스테이크.jpg" alt="블랙앵거스 스테이크">
-                        <div class="item-info">
-                            <p>블랙앵거스 스테이크</p>
-                            <p>33,900원</p>
-                        </div>
-                        <button class="order-button">ADD CART</button>
-                    </article>
-                </div>                                
+                <div class="menu-list"></div>                                
             </section>
             <section class="order-list-section">
                 <h2>Your order</h2>
-                <img src="" alt="">
+                <!-- <img src="" alt="">
                 <p>Total </p>
                 <table>
                     <thead>
@@ -66,10 +38,14 @@
                             <td>10000</td>
                         </tr>
                     </tbody>
-                </table>
+                </table> -->
                 <button class="order-button">Make payment</button>
             </section>
         </div>        
-    </div>
+    </div>    
+    <script src="menuList.js"></script>
+    <script src="orderList.js"></script>    
+    <script src="app.js"></script>    
+    <script src="index.js"></script>
 </body>
 </html>
