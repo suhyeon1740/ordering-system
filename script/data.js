@@ -42,8 +42,8 @@ export default [
             },
             {
                 id: 7,
-                name: '사이다',
-                price: 3000
+                name: '피클',
+                price: 1000
             }
         ]
     }

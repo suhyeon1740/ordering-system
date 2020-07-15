@@ -5,18 +5,15 @@ import OrderList from './orderList.js'
 class App {
     constructor() {
         this.data = data
-        this.$app = document.querySelector('.wrap')    
+        this.menuList = new MenuList(this.data)
+        this.orderList = new OrderList() 
+        this.$app = document.querySelector('.wrap')
         this.init()
     }
-    init() {     
-        this.render()
-        this.menuList = new MenuList()
-        this.orderList = new OrderList()  
-        this.menuList.setState(this.data)
-        this.orderList.render() 
-    }
-    render() {
-        //this.$app.innerHTML = ``
-    }
+    init() {              
+        this.menuList.setState(0)
+        this.$app.addEventListener('menuClick', e => this.menuList.setState(e.detail.tab()))
+        this.$app.addEventListener('productClick', e => console.log(e))
+    } 
 }
 export default App
