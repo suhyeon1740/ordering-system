@@ -14,23 +14,31 @@ class App {
     }
     init() {
         this.menuList.setState(0)
-        this.$app.addEventListener('menuClick', this.setState)
-        // this.$app.addEventListener('productClick', e =>
-        //     this.orderList.setState(e.detail.getProduct())
-        // )
+        this.$app.addEventListener('click', (e) => {
+            switch (e.target.dataset.target) {
+                case 'add-cart':
+                    this.addOrder(+e.target.parentNode.dataset.id)
+                    break
+                case 'menu':
+                    this.setState(e.target.dataset.tab)
+            }
+        })
     }
-    setState = (e) => {
-        this.selectTab = e.detail.tab()
+    setState(selectTab) {
+        this.selectTab = selectTab
         this.menuList.setState(this.selectTab)
     }
-    addOrder = (e) => {
-        const id = +e.target.parentNode.dataset.id
+    addOrder(id) {
         const menuList = this.menuData[this.selectTab].list
         const menu = menuList[menuList.findIndex((menu) => menu.id === id)]
-        this.orderList.setState({
-            ...menu,
-            count: 1,
-        })
+        const findIndex = this.orderData.findIndex((element) => element.id == id)
+        findIndex > -1
+            ? this.orderData[findIndex].count++
+            : this.orderData.push({
+                  ...menu,
+                  count: 1,
+              })
+        this.orderList.setState(this.orderData)
     }
 }
 export default App
