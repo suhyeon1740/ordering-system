@@ -6,7 +6,7 @@ class App {
     constructor() {
         this.menuData = menuData
         this.orderData = []
-        this.menuList = new MenuList(this.menuData, this.addOrder)
+        this.menuList = new MenuList(this.menuData)
         this.orderList = new OrderList()
         this.$app = document.querySelector('.wrap')
         this.selectTab = 0
