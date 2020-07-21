@@ -14,13 +14,18 @@ class App {
     }
     init() {
         this.menuList.setState(0)
-        this.$app.addEventListener('click', (e) => {
-            switch (e.target.dataset.target) {
+        this.$app.addEventListener('click', ({ target }) => {
+            switch (target.dataset.target) {
                 case 'add-cart':
-                    this.addOrder(+e.target.parentNode.dataset.id)
+                    this.addOrder(+target.parentNode.dataset.id)
                     break
                 case 'menu':
-                    this.setState(e.target.dataset.tab)
+                    this.setState(target.dataset.tab)
+            }
+        })
+        this.$app.addEventListener('change', ({ target }) => {
+            if (target.dataset.target === 'select') {
+                this.changeCount(target)
             }
         })
     }
@@ -38,6 +43,13 @@ class App {
                   ...menu,
                   count: 1,
               })
+        this.orderList.setState(this.orderData)
+    }
+    changeCount(target) {
+        const id = target.parentNode.parentNode.dataset.id
+        const count = target.value
+        const findIndex = this.orderData.findIndex((element) => element.id == id)
+        this.orderData[findIndex].count = Number(count)
         this.orderList.setState(this.orderData)
     }
 }
