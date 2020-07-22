@@ -16,7 +16,7 @@ class OrderList {
                 return `<tr data-id="${id}">
                     <td>${name}</td>
                     <td>${this.setSelectBox(count)}</td>
-                    <td>${price * count}</td>
+                    <td>₩${price * count}</td>
                     <td><i data-target="remove" class="fas fa-minus-circle"></i></td>
                 </tr>`
             })
