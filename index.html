@@ -1,40 +1,38 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Ordering System</title>
-    <link rel="stylesheet" href="style.css">
-    <script src="https://code.jquery.com/jquery-3.5.1.js" integrity="sha256-QWo7LDvxbWT2tbbQ97B53yJnYU3WhH/C8ycbRAkjPDc="
-        crossorigin="anonymous"></script>
-        
-</head>
-<body>
-    <div class="wrap">
-        <header>
-            <h1>ORDERING SYSTEM</h1>
-            <nav></nav>
-        </header>
-        <div class="flex-wrap">
-            <section class="menu-list-section">
-                <div class="menu-list"></div>
-            </section>
-            <section class="order-list-section">
-                <div class="order-list">
-                    <h2>Your Order</h2>
-                    <img src="" alt="">
-                    <div class="total">
-                        <span>Total </span>
-                        <span id="total">₩0</span>
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Ordering System</title>
+        <link rel="stylesheet" href="style.css" />
+        <script src="https://kit.fontawesome.com/7fade9baad.js" crossorigin="anonymous"></script>
+    </head>
+    <body>
+        <div class="wrap">
+            <header>
+                <h1>ORDERING SYSTEM</h1>
+                <nav></nav>
+            </header>
+            <div class="flex-wrap">
+                <section class="menu-list-section">
+                    <div class="menu-list"></div>
+                </section>
+                <section class="order-list-section">
+                    <div class="order-list">
+                        <h2>Your Order</h2>
+                        <img src="" alt="" />
+                        <div class="total">
+                            <span>Total </span>
+                            <span id="total">₩0</span>
+                        </div>
+                        <table>
+                            <tbody id="order-list"></tbody>
+                        </table>
                     </div>
-                    <table>
-                        <tbody id="order-list"></tbody>
-                    </table>
-                </div>
-                <button class="order-button" id="payment">PAYMENT</button>
-            </section>
+                    <button class="order-button" id="payment" data-target="payment">PAYMENT</button>
+                </section>
+            </div>
         </div>
-    </div>    
-    <script type="module" src="script/index.js"></script>
-</body>
+        <script type="module" src="script/index.js"></script>
+    </body>
 </html>

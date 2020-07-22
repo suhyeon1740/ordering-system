@@ -21,6 +21,13 @@ class App {
                     break
                 case 'menu':
                     this.setState(target.dataset.tab)
+                    break
+                case 'remove':
+                    this.removeOrder(+target.parentNode.parentNode.dataset.id)
+                    break
+                case 'payment':
+                    this.payment()
+                    break
             }
         })
         this.$app.addEventListener('change', ({ target }) => {
@@ -51,6 +58,15 @@ class App {
         const findIndex = this.orderData.findIndex((element) => element.id == id)
         this.orderData[findIndex].count = Number(count)
         this.orderList.setState(this.orderData)
+    }
+    removeOrder(id) {
+        this.orderData = this.orderData.filter((list) => list.id !== id)
+        this.orderList.setState(this.orderData)
+    }
+    payment() {
+        if (this.orderData.length > 0) {
+            alert('주문이 완료되었습니다.')
+        }
     }
 }
 export default App

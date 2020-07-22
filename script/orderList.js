@@ -13,9 +13,12 @@ class OrderList {
         this.$list.innerHTML = `${this.data
             .map(({ id, name, price, count }) => {
                 total += price * count
-                return `<tr data-id="${id}"><td>${name}</td><td>${this.setSelectBox(
-                    count
-                )}</td><td>${price * count}</td></tr>`
+                return `<tr data-id="${id}">
+                    <td>${name}</td>
+                    <td>${this.setSelectBox(count)}</td>
+                    <td>${price * count}</td>
+                    <td><i data-target="remove" class="fas fa-minus-circle"></i></td>
+                </tr>`
             })
             .join('')}`
         this.$total.innerHTML = `₩${total}`

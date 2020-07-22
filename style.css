@@ -114,3 +114,6 @@ td {
     position: absolute;
     bottom: 0;
 }
+i {
+    cursor: pointer;
+}
