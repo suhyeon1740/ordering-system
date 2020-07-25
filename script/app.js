@@ -1,44 +1,36 @@
-import menuData from './data.js'
-import MenuList from './menuList.js'
-import OrderList from './orderList.js'
+import ProductList from "./ProductList.js"
+import OrderList from "./orderList.js"
 
 class App {
     constructor() {
-        this.menuData = menuData
         this.orderData = []
-        this.menuList = new MenuList(this.menuData)
+        this.productList = new ProductList()
         this.orderList = new OrderList()
-        this.$app = document.querySelector('.wrap')
-        this.selectTab = 0
+        this.$app = document.querySelector(".wrap")
         this.init()
     }
     init() {
-        this.menuList.setState(0)
-        this.$app.addEventListener('click', ({ target }) => {
+        this.$app.addEventListener("click", ({ target }) => {
             switch (target.dataset.target) {
-                case 'add-cart':
+                case "add-cart":
                     this.addOrder(+target.parentNode.dataset.id)
                     break
-                case 'menu':
-                    this.setState(target.dataset.tab)
+                case "menu":
+                    this.productList.setState(target.dataset.tab)
                     break
-                case 'remove':
+                case "remove":
                     this.removeOrder(+target.parentNode.parentNode.dataset.id)
                     break
-                case 'payment':
+                case "payment":
                     this.payment()
                     break
             }
         })
-        this.$app.addEventListener('change', ({ target }) => {
-            if (target.dataset.target === 'select') {
+        this.$app.addEventListener("change", ({ target }) => {
+            if (target.dataset.target === "select") {
                 this.changeCount(target)
             }
         })
-    }
-    setState(selectTab) {
-        this.selectTab = selectTab
-        this.menuList.setState(this.selectTab)
     }
     addOrder(id) {
         const menuList = this.menuData[this.selectTab].list
@@ -65,7 +57,7 @@ class App {
     }
     payment() {
         if (this.orderData.length > 0) {
-            alert('주문이 완료되었습니다.')
+            alert("주문이 완료되었습니다.")
         }
     }
 }

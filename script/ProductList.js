@@ -1,13 +1,16 @@
-import Nav from './nav.js'
+import data from "./data.js"
+import Nav from "./Nav.js"
 
-class MenuList {
-    constructor(data) {
+class ProductList {
+    constructor() {
         this.data = data
-        this.$list = document.querySelector('.menu-list')
-        this.nav = new Nav(this.data)
+        this.selectTab = 0
+        this.$list = document.querySelector(".menu-list")
+        this.nav = new Nav(data.menu, 0)
+        this.render()
     }
     render() {
-        this.$list.innerHTML = this.data[this.selectTab].list
+        this.$list.innerHTML = this.data.list.filter(item => item.menu == this.selectTab)
             .map(
                 ({ name, price, id }) => `<article class="menu-item" data-id=${id}>
                         <img src="images/${name}.jpg" alt="${name}">
@@ -18,7 +21,7 @@ class MenuList {
                         <button class="order-button" data-target="add-cart">ADD CART</button>
                     </article>`
             )
-            .join('')
+            .join("")
     }
     setState(selectTab) {
         this.selectTab = selectTab
@@ -26,4 +29,4 @@ class MenuList {
         this.render()
     }
 }
-export default MenuList
+export default ProductList
