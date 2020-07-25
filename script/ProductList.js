@@ -3,14 +3,14 @@ import Nav from "./Nav.js"
 
 class ProductList {
     constructor() {
-        this.data = data
+        this.data = data.list
         this.selectTab = 0
         this.$list = document.querySelector(".menu-list")
         this.nav = new Nav(data.menu, 0)
         this.render()
     }
     render() {
-        this.$list.innerHTML = this.data.list.filter(item => item.menu == this.selectTab)
+        this.$list.innerHTML = this.data.filter(item => item.menu == this.selectTab)
             .map(
                 ({ name, price, id }) => `<article class="menu-item" data-id=${id}>
                         <img src="images/${name}.jpg" alt="${name}">

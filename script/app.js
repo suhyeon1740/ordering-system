@@ -1,9 +1,8 @@
 import ProductList from "./ProductList.js"
-import OrderList from "./orderList.js"
+import OrderList from "./OrderList.js"
 
 class App {
     constructor() {
-        this.orderData = []
         this.productList = new ProductList()
         this.orderList = new OrderList()
         this.$app = document.querySelector(".wrap")
@@ -13,52 +12,42 @@ class App {
         this.$app.addEventListener("click", ({ target }) => {
             switch (target.dataset.target) {
                 case "add-cart":
-                    this.addOrder(+target.parentNode.dataset.id)
+                    this.productClick(+target.parentNode.dataset.id)
                     break
                 case "menu":
                     this.productList.setState(target.dataset.tab)
                     break
                 case "remove":
-                    this.removeOrder(+target.parentNode.parentNode.dataset.id)
+                    this.orderList.removeOrder(+target.parentNode.parentNode.dataset.id)
                     break
                 case "payment":
-                    this.payment()
+                    this.orderList.payment()
                     break
             }
         })
         this.$app.addEventListener("change", ({ target }) => {
             if (target.dataset.target === "select") {
-                this.changeCount(target)
+                this.changeCount(+target.parentNode.parentNode.dataset.id, target.value)
             }
         })
     }
-    addOrder(id) {
-        const menuList = this.menuData[this.selectTab].list
-        const menu = menuList[menuList.findIndex((menu) => menu.id === id)]
-        const findIndex = this.orderData.findIndex((element) => element.id == id)
-        findIndex > -1
-            ? this.orderData[findIndex].count++
-            : this.orderData.push({
-                  ...menu,
-                  count: 1,
-              })
-        this.orderList.setState(this.orderData)
+    getProduct(id) {
+        return this.productList.data.find((product) => product.id === id)
     }
-    changeCount(target) {
-        const id = target.parentNode.parentNode.dataset.id
-        const count = target.value
-        const findIndex = this.orderData.findIndex((element) => element.id == id)
-        this.orderData[findIndex].count = Number(count)
-        this.orderList.setState(this.orderData)
+    findProduct(id) {
+        //선택한 상품이 orderData에 존재하는지 찾기
+        return this.orderList.data.find((product) => product.id === id)
     }
-    removeOrder(id) {
-        this.orderData = this.orderData.filter((list) => list.id !== id)
-        this.orderList.setState(this.orderData)
-    }
-    payment() {
-        if (this.orderData.length > 0) {
-            alert("주문이 완료되었습니다.")
+    productClick(id) {
+        const product = this.findProduct(id)
+        if (!product) {
+            this.orderList.addOrder(this.getProduct(id))
+        } else {
+            this.orderList.changeCount(product, product.count + 1)
         }
+    }
+    changeCount(id, count) {
+        this.orderList.changeCount(this.findProduct(id), +count)
     }
 }
 export default App
