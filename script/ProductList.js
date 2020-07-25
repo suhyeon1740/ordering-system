@@ -1,5 +1,6 @@
 import data from "./data.js"
 import Nav from "./Nav.js"
+import { numberComma } from "./lib.js"
 
 class ProductList {
     constructor() {
@@ -16,7 +17,7 @@ class ProductList {
                         <img src="images/${name}.jpg" alt="${name}">
                         <div class="item-info">
                             <p data-type="name">${name}</p>
-                            <p data-type="price">${price}원</p>
+                            <p data-type="price">${numberComma(price)}원</p>
                         </div>
                         <button class="order-button" data-target="add-cart">ADD CART</button>
                     </article>`

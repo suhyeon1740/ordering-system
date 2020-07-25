@@ -1,12 +1,10 @@
+import { numberComma } from "./lib.js"
+
 class OrderList {
     constructor() {
         this.$list = document.querySelector("#order-list")
         this.$total = document.querySelector("#total")
         this.data = []
-    }
-    setState(data) {
-        this.data = data
-        this.render()
     }
     render() {
         let total = 0
@@ -16,12 +14,12 @@ class OrderList {
                 return `<tr data-id="${id}">
                     <td>${name}</td>
                     <td>${this.setSelectBox(count)}</td>
-                    <td>₩${price * count}</td>
+                    <td>₩${numberComma(price * count)}</td>
                     <td><i data-target="remove" class="fas fa-minus-circle"></i></td>
                 </tr>`
             })
             .join("")}`
-        this.$total.innerHTML = `₩${total}`
+        this.$total.innerHTML = `₩${numberComma(total)}`
     }
     setSelectBox(count) {
         let $option = ""
